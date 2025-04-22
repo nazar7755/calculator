@@ -1,32 +1,4 @@
 /**
- * @param {number} a - Перше число
- * @param {number} b - Друге число
- * @param {string} operator - Оператор для обчислення: +, -, *, /
- * @returns {number|string} Результат операції або помилка
- */
-const calculate = (a, b, operator) => {
-  switch (operator) {
-    case '+':
-      return add(a, b);
-    case '-':
-      return subtract(a, b);
-    case '*':
-      return multiply(a, b);
-    case '/':
-      return divide(a, b);
-    default:
-      return 'Невідомий оператор!';
-  }
-};
-
-const num1 = parseFloat(prompt('Введіть перше число:'));
-const operator = prompt('Введіть оператор (+, -, *, /):');
-const num2 = parseFloat(prompt('Введіть друге число:'));
-
-const result = calculate(num1, num2, operator);
-alert(`Результат: ${result}`);
-
-/**
  * Функція add  виконує операцію додавання двох чисел
  * @param {number} a - Перше число
  * @param {number} b - Друге число
@@ -63,3 +35,56 @@ const divide = (a, b) => {
   }
   return a / b;
 };
+
+/**
+ * Обчислює результат арифметичної операції
+ * @param {number} a - Перше число
+ * @param {number} b - Друге число
+ * @param {string} operator - Один з операторів: +, -, *, /
+ * @returns {number} Результат обчислення
+ * @throws {Error} Якщо оператор некоректний
+ */
+const calculate = (a, b, operator) => {
+  switch (operator) {
+    case '+':
+      return add(a, b);
+    case '-':
+      return subtract(a, b);
+    case '*':
+      return multiply(a, b);
+    case '/':
+      return divide(a, b);
+    default:
+      throw new Error('Помилка: невідомий оператор!');
+  }
+};
+
+/**
+ * Запускає калькулятор: запитує вхідні дані, обчислює та виводить результат.
+ */
+const runCalculator = () => {
+  const input1 = prompt('Введіть перше число:');
+  const num1 = parseFloat(input1);
+  if (isNaN(num1)) {
+    console.log('Помилка: введено некоректне перше число.');
+    return;
+  }
+
+  const operator = prompt('Введіть оператор (+, -, *, /):');
+  if (!['+', '-', '*', '/'].includes(operator)) {
+    console.log('Помилка: невідомий оператор.');
+    return;
+  }
+
+  const input2 = prompt('Введіть друге число:');
+  const num2 = parseFloat(input2);
+  if (isNaN(num2)) {
+    console.log('Помилка: введено некоректне друге число.');
+    return;
+  }
+
+  const result = calculate(num1, num2, operator);
+  console.log(`Результат: ${result}`);
+};
+
+runCalculator();
