@@ -90,31 +90,24 @@ const calculate = (a, b, operator) => {
 };
 
 /**
- * Запускає калькулятор: запитує вхідні дані, обчислює та виводить результат.
+ * Запускає калькулятор: запитує вхідні дані, обчислює та виводить результат
  */
 const runCalculator = () => {
-  const input1 = prompt('Введіть перше число:');
-  const num1 = parseFloat(input1);
-  if (isNaN(num1)) {
-    console.log('Помилка: введено некоректне перше число.');
-    return;
-  }
+  try {
+    const input1 = prompt('Введіть перше число:', '0');
+    const num1 = validateNumberInput(input1);
 
-  const operator = prompt('Введіть оператор (+, -, *, /):');
-  if (!['+', '-', '*', '/'].includes(operator)) {
-    console.log('Помилка: невідомий оператор.');
-    return;
-  }
+    const operator = prompt('Введіть оператор (+, -, *, /):', '+');
+    validateOperator(operator);
 
-  const input2 = prompt('Введіть друге число:');
-  const num2 = parseFloat(input2);
-  if (isNaN(num2)) {
-    console.log('Помилка: введено некоректне друге число.');
-    return;
-  }
+    const input2 = prompt('Введіть друге число:', '0');
+    const num2 = validateNumberInput(input2);
 
-  const result = calculate(num1, num2, operator);
-  console.log(`Результат: ${result}`);
+    const result = calculate(num1, num2, operator);
+    console.log(`Результат: ${result}`);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 runCalculator();
