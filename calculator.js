@@ -37,6 +37,25 @@ const divide = (a, b) => {
 };
 
 /**
+ * Перевіряє, чи введене значення є коректним числом
+ * @param {string} input - Введене значення
+ * @returns {number} Коректне число
+ * @throws {Error} Якщо введене значення не є коректним числом
+ */
+const validateNumberInput = (input) => {
+  if (input.trim() === '') {
+    throw new Error('Помилка: введено порожнє значення.');
+  }
+
+  const parsedNumber = parseFloat(input);
+  if (isNaN(parsedNumber)) {
+    throw new Error('Помилка: введено некоректне число.');
+  }
+
+  return parsedNumber;
+};
+
+/**
  * Обчислює результат арифметичної операції
  * @param {number} a - Перше число
  * @param {number} b - Друге число
