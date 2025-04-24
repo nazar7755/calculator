@@ -56,6 +56,17 @@ const validateNumberInput = (input) => {
 };
 
 /**
+ * Перевіряє оператор і викидає помилку, якщо оператор некоректний
+ * @param {string} operator - Оператор для перевірки (+, -, *, /)
+ * @throws {Error} Якщо оператор некоректний
+ */
+const validateOperator = (operator) => {
+  if (!['+', '-', '*', '/'].includes(operator)) {
+    throw new Error('Помилка: невідомий оператор.');
+  }
+};
+
+/**
  * Обчислює результат арифметичної операції
  * @param {number} a - Перше число
  * @param {number} b - Друге число
