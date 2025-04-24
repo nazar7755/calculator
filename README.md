@@ -55,7 +55,7 @@
 
 ## 👤 Автор:
 
-- **Назар Корольов**  
+- **Назар Чорновол**  
   📧 [nazarcorovol09@gmail.com](mailto:nazarcorovol09@gmail.com)  
   📎 GitHub: [@nazar7755](https://github.com/nazar7755)
 
